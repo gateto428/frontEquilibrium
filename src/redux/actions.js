@@ -1,4 +1,5 @@
 import axios from 'axios';
+import https from 'https';
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const GET_ALL_COURSE = 'GET_ALL_COURSE';
@@ -12,12 +13,19 @@ export const GET_TOTAL_USERS = 'GET_TOTAL_USERS';
 export const ERROR = 'ERROR';
 const HOST  = 'https://18.117.78.127:8080/api/v1/equilibrium'
 
+const agent = new https.Agent({ 
+    rejectUnauthorized: false,
+    version: '1.0'
+  });
 
 
 export function login(credentials){
+    const config = {
+        httpsAgent: agent,
+      };
     return async function(dispatch){
         try {
-            let response = await (axios.post(HOST + '/person/login', credentials))
+            let response = await (axios.post(HOST + '/person/login', credentials, config))
             return dispatch({type: LOGIN, payload: response.data});
         } catch (error) {
             return dispatch({type: ERROR, payload: error.response.data});
@@ -38,6 +46,7 @@ export function registerUser(data){
 
 export function getAllCourse(offset, limit, token){
     const config = {
+        httpsAgent: agent,
         headers:{
           token: token,
         }
