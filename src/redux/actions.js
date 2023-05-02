@@ -10,7 +10,7 @@ export const GET_PLAN = 'GET_PLAN';
 export const GET_TOTAL_PLAN = 'GET_TOTAL_PLAN';
 export const GET_TOTAL_USERS = 'GET_TOTAL_USERS';
 export const ERROR = 'ERROR';
-const HOST  = 'https://18.117.78.127:8080/api/v1/equilibrium'
+const HOST  = 'http://18.117.78.127:8080/api/v1/equilibrium'
 
 
 
