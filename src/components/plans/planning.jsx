@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Planning(props) {
   const dispatch = useDispatch();
+  // eslint-disable-next-line
   const [payPlan, setPayPlan] = useState({
     idPerson: props.idPerson,
     idPlan: props?.plan?.idPlan,
